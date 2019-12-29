@@ -15,10 +15,10 @@ public class HelloController {
 
     }
 
-    @RequestMapping(value = "/about", method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String printJpa(ModelMap model) {
 
-        return "about";
+        return "user-list";
 
     }
 
