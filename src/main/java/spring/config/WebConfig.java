@@ -24,18 +24,16 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         return resolver;
     }
 
-    /*@Override
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/WEB-INF/pages/**").addResourceLocations("/pages/");
+    }
+/* // Метод из примера https://crud-java.readthedocs.io/ru/latest/server-base.html
+    @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
         if (!registry.hasMappingForPattern("/webjars/**")) {
             registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
         }
     }*/
-
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/WEB-INF/pages/**").addResourceLocations("/pages/");
-    }
-
-
 }
