@@ -7,7 +7,7 @@ pageEncoding="UTF-8"%>
 </head>
 <body>
 	<center>
-		<h1>Login page</h1>
+		<h1>Welcome to User Management Application</h1>
         <h2>
 <%--        	<a href="/register">Register</a>--%>
             <a href="/list">/list</a>

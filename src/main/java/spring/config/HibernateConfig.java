@@ -10,8 +10,8 @@ import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import spring.dao.UserDao;
 import spring.dao.UserDaoHibernate;
-import spring.model.User;
 
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -56,11 +56,7 @@ public class HibernateConfig {
     }
 
     @Bean
-    public UserDaoHibernate getCarBrandHibernateDAO() {
+    public UserDaoHibernate userDao() {
         return new UserDaoHibernate();
     }
-/*    @Bean
-    public CarModelDAO getCarModelHibernateDAO() {
-        return new CarModelDAOHibernateImpl();
-    }*/
 }

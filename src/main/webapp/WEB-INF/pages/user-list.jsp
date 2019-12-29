@@ -9,7 +9,7 @@
 	<center>
 		<h1>User Management</h1>
         <h2>
-        	<a href="/admin/new">Add New User</a>
+        	<a href="/new">Add New User</a>
         	&nbsp;&nbsp;&nbsp;
             <a href="/">Back to starting page</a>
         	
@@ -34,16 +34,16 @@
                     <td><c:out value="${user.money}" /></td>
                     <td><c:out value="${user.role}" /></td>
                     <td>
-                    	<a href="/admin/edit?id=<c:out value='${user.id}' />">Edit</a>
+                    	<a href="/edit?id=<c:out value='${user.id}' />">Edit</a>
                     	&nbsp;&nbsp;&nbsp;&nbsp;
-                    	<a href="/admin/delete?id=<c:out value='${user.id}' />">Delete</a>
+                    	<a href="/delete?id=<c:out value='${user.id}' />">Delete</a>
                     </td>
                 </tr>
             </c:forEach>
         </table>
     </div>
-    <footer>
-        <p>Your role is: ${sessionScope['role']}</p>
-    </footer>
+<%--    <footer>--%>
+<%--        <p>Your role is: ${sessionScope['role']}</p>--%>
+<%--    </footer>--%>
 </body>
 </html>
