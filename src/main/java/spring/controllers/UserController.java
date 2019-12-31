@@ -51,8 +51,9 @@ public class UserController {
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public String toEditForm(@RequestParam(value = "id") String id, Model model) {
-        model.addAttribute("user", service.getUser(Integer.parseInt(id)));
+    //тут творится магия! Передавай хоть инт, хоть стринг, будет работать как надо
+    public String toEditForm(@RequestParam(value = "id") int id, Model model) {
+        model.addAttribute("user", service.getUser(id));
         return "user-form";
     }
 

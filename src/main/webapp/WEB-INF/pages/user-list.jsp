@@ -4,9 +4,18 @@
 <html>
 <head>
 	<title>User Management Application</title>
+
+    <!-- reference our style sheet -->
+
+    <link type="text/css"
+          rel="stylesheet"
+          href="${pageContext.request.contextPath}/resources/css/style.css" />
+<%--    ${pageContext.request.contextPath}--%>
 </head>
 <body>
 	<center>
+        <div id="wrapper">
+            <div id="header">
 		<h1>User Management</h1>
         <h2>
         	<a href="/new">Add New User</a>
@@ -14,6 +23,8 @@
             <a href="/">Back to starting page</a>
         	
         </h2>
+            </div>
+        </div>
 	</center>
     <div align="center">
         <table border="1" cellpadding="10">
