@@ -178,7 +178,7 @@
 
                     <configuration>
                         <warSourceDirectory>src/main/webapp</warSourceDirectory>
-                        <warName>spring3</warName>
+                        <warName>spring4</warName>
                         <failOnMissingWebXml>false</failOnMissingWebXml>
                     </configuration>
                 </plugin>
@@ -194,7 +194,7 @@
 
             </plugins>
         </pluginManagement>
-        <finalName>spring3</finalName>
+        <finalName>spring4</finalName>
     </build>
 
 </project>

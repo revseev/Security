@@ -21,22 +21,9 @@ public class HibernateConfig {
     @Autowired
     private DataSource dataSource;
 
-/*    @Autowired
-    private Environment env;*/
-
     //Hibernate configuration
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
-/*        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-        sessionFactory.setDataSource(dataSource);
-
-        Properties props = new Properties();
-        props.put("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
-        props.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
-        props.put("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
-
-        sessionFactory.setHibernateProperties(props);
-        sessionFactory.setAnnotatedClasses(User.class);*/
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource);
         sessionFactory.setPackagesToScan(new String[] { "spring.model" });
