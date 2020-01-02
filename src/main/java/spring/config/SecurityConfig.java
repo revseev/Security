@@ -2,6 +2,7 @@ package spring.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User.UserBuilder;
@@ -13,7 +14,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
         // add UserBuilder
         UserBuilder users = User.withDefaultPasswordEncoder();
         // add users for in memory authentication
@@ -21,6 +21,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .withUser(users.username("john").password("john").roles("EMPLOYEE"))
                 .withUser(users.username("mary").password("mary").roles("MANAGER"))
                 .withUser(users.username("roman").password("roman").roles("ADMIN"));
+    }
 
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                    .loginPage("/login") // TODO create a controller for this
+                    .loginProcessingUrl("/authenticate") //No need to have a controller for this
+                    .permitAll();
     }
 }
