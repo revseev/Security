@@ -7,10 +7,9 @@
 
     <!-- reference our style sheet -->
 
-    <link type="text/css"
+   <%-- <link type="text/css"
           rel="stylesheet"
-          href="${pageContext.request.contextPath}/resources/css/style.css" />
-<%--    ${pageContext.request.contextPath}--%>
+          href="${pageContext.request.contextPath}/resources/css/style.css" />--%>
 </head>
 <body>
 	<center>
@@ -20,7 +19,7 @@
         <h2>
         	<a href="/new">Add New User</a>
         	&nbsp;&nbsp;&nbsp;
-            <a href="/">Back to starting page</a>
+            <a href="${pageContext.request.contextPath}/">Back to starting page</a>
         	
         </h2>
             </div>
@@ -53,8 +52,8 @@
             </c:forEach>
         </table>
     </div>
-<%--    <footer>--%>
-<%--        <p>Your role is: ${sessionScope['role']}</p>--%>
-<%--    </footer>--%>
+    <footer>
+        <c:import url="page_components/logout.jsp" />
+    </footer>
 </body>
 </html>
