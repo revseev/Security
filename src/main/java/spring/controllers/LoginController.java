@@ -11,4 +11,11 @@ public class LoginController {
 //        return "login";
         return "fancy-login";
     }
+
+    @GetMapping("/access-denied")
+    public String showDeniedPage() {
+        return "denied";
+    }
+
 }
+
