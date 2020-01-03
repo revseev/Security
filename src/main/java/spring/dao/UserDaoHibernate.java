@@ -25,7 +25,7 @@ public class UserDaoHibernate implements UserDao {
     }
 
     @Override
-    public User getUser(int id) {
+    public User getUser(long id) {
         return (User) getCurrentSession().get(User.class, id);
     }
 
@@ -36,7 +36,7 @@ public class UserDaoHibernate implements UserDao {
     }
 
     @Override
-    public void deleteUser(int id) {
+    public void deleteUser(long id) {
         User user = (User) getCurrentSession().get(User.class, id);
         if (user != null) {
             getCurrentSession().delete(user);

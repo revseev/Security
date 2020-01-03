@@ -39,7 +39,7 @@
             <c:forEach var="user" items="${users}">
                 <tr>
                     <td><c:out value="${user.id}" /></td>
-                    <td><c:out value="${user.name}" /></td>
+                    <td><c:out value="${user.username}" /></td>
                     <td><c:out value="${user.password}" /></td>
                     <td><c:out value="${user.money}" /></td>
                     <td><c:out value="${user.role}" /></td>

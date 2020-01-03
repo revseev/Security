@@ -1,7 +1,9 @@
 package spring.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 
 @Entity
@@ -11,51 +13,34 @@ public class User {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "username", nullable = false)
+    private String username;
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password;
 
     @Column(name = "money")
     private Long money;
 
-    @Column(name = "role")
-    private String role;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+    inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
+
 
     public User() {
     }
 
-    public User(String name, String password, Long money) {
-        this.name = name;
-        this.password = password;
-        this.money = money;
-        this.role = "user"; //при создании User без указания роли (через регистрацию), по-умолчанию роль будет user
-    }
+    //TODO  additional constructors if needed
 
-    public User(String name, String password, Long money, String role) {
-        this.name = name;
-        this.password = password;
-        this.money = money;
-        this.role = role;
-    }
-
-    public User(int id, String name, String password, Long money, String role) {
-        this.id = id;
-        this.name = name;
-        this.password = password;
-        this.money = money;
-        this.role = role;
-    }
-
-
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -67,12 +52,12 @@ public class User {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String name) {
+        this.username = name;
     }
 
     public Long getMoney() {
@@ -83,12 +68,12 @@ public class User {
         this.money = money;
     }
 
-    public String getRole() {
-        return role;
+    public Set<Role> getRoles() {
+        return roles;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     @Override
@@ -96,13 +81,13 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return getName().equals(user.getName()) &&
+        return getUsername().equals(user.getUsername()) &&
                 getPassword().equals(user.getPassword());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName(), getPassword());
+        return Objects.hash(getUsername(), getPassword());
     }
 
 }
