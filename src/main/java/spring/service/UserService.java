@@ -17,5 +17,5 @@ public interface UserService {
 
      void updateUser(User user);
 
-     Optional<User> loginUser(String name, String password);
+//     Optional<User> loginUser(String name, String password);
 }

@@ -24,7 +24,9 @@ public class User {
     @Column(name = "money")
     private Long money;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+                    CascadeType.DETACH, CascadeType.REFRESH})
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
     inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -34,7 +36,19 @@ public class User {
     public User() {
     }
 
-    //TODO  additional constructors if needed
+    public User(String username, String password, Long money, Set<Role> roles) {
+        this.username = username;
+        this.password = password;
+        this.money = money;
+        this.roles = roles;
+    }
+
+    public User(String username, String password, Long money) {
+        this.username = username;
+        this.password = password;
+        this.money = money;
+    }
+
 
     public long getId() {
         return id;

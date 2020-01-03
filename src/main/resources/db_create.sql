@@ -24,5 +24,5 @@ CREATE TABLE users_roles(
 
 -- Populate Table:
 INSERT INTO users VALUES (1, 'a', 'a', 999);
-INSERT INTO roles VALUES (1, 'ROLE_USER'), (2, 'ROLE_ADMIN');
+INSERT INTO roles VALUES (1, 'USER'), (2, 'ADMIN');
 INSERT INTO users_roles VALUES (1, 1), (1, 2);

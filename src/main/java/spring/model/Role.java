@@ -9,13 +9,15 @@ import java.util.Set;
 @Table(name = "roles")
 public class Role {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name = "name", nullable = false)
     private String name;
 
-    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY,
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+                    CascadeType.DETACH, CascadeType.REFRESH})
     private Set<User> users = new HashSet<>();
 
 
@@ -23,6 +25,9 @@ public class Role {
     }
 
     //TODO  additional constructors if needed
+    public Role(String name) {
+        this.name = name;
+    }
 
 
     public long getId() {

@@ -50,7 +50,8 @@ public class UserServiceImpl implements UserService {
 
 //Login :
 
-    @Transactional
+    //TODO not sure if this is needed
+/*    @Transactional
     @Override
     public Optional<User> loginUser(String name, String password) {
         User visitor = new User(name, password, 0L);
@@ -59,5 +60,5 @@ public class UserServiceImpl implements UserService {
                         .stream()
                         .filter(a -> a.equals(visitor))
                         .findAny();
-    }
+    }*/
 }
