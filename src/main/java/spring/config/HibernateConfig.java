@@ -9,7 +9,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import spring.dao.UserDaoHibernate;
+import spring.dao.UserDaoImpl;
 import javax.sql.DataSource;
 
 @Configuration
@@ -39,7 +39,7 @@ public class HibernateConfig {
     }
 
     @Bean
-    public UserDaoHibernate userDao() {
-        return new UserDaoHibernate();
+    public UserDaoImpl userDao() {
+        return new UserDaoImpl();
     }
 }

@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
 
 //CRUD operations:
 
-    @Transactional
+    @Transactional//TODO move @Transactional to class declaration
     @Override
     public void addUser(User user){
         userDao.addUser(user);

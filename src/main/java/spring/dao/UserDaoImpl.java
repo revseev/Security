@@ -1,5 +1,6 @@
 package spring.dao;
 
+import org.hibernate.Hibernate;
 import spring.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class UserDaoHibernate implements UserDao {
+public class UserDaoImpl implements UserDao {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -25,9 +26,14 @@ public class UserDaoHibernate implements UserDao {
     }
 
     @Override
-    public User getUser(long id) {
-        return (User) getCurrentSession().get(User.class, id);
+    public User getById(long id) {
+        User user = getCurrentSession().get(User.class, id);
+        if(user != null){
+            Hibernate.initialize(user.getRoles());
+        }
+        return user;
     }
+
 
     @Override
     @SuppressWarnings("unchecked")

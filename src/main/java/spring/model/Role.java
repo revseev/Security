@@ -1,9 +1,7 @@
 package spring.model;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "roles")
@@ -12,24 +10,19 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "name", nullable = false)
-    private String name;
-
-    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY,
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE,
-                    CascadeType.DETACH, CascadeType.REFRESH})
-    private Set<User> users = new HashSet<>();
+    @Column(name = "type", nullable = false, unique = true)
+    private String type = RoleType.USER.asString();
 
 
     public Role() {
     }
 
     //TODO  additional constructors if needed
-    public Role(String name) {
-        this.name = name;
+    public Role(String type) {
+        this.type = type;
     }
 
-
+    //TODO Long?
     public long getId() {
         return id;
     }
@@ -38,32 +31,25 @@ public class Role {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getType() {
+        return type;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public Set<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Role role = (Role) o;
-        return getName().equals(role.getName());
+        return getType().equals(role.getType());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName());
+        return Objects.hash(getType());
     }
 }
