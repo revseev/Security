@@ -7,15 +7,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81415d41-22e6-46b0-aaff-69e8d98996a9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/spring/dao/RoleDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9c03e184-c32a-4779-9d9d-6dc4a20f344e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9c03e184-c32a-4779-9d9d-6dc4a20f344e.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/spring/service/RoleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/spring/service/RoleServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/spring/config/HibernateConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/spring/config/HibernateConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/spring/dao/RoleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/spring/dao/RoleDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/spring/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/spring/dao/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/spring/dao/UserDaoHibernate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/spring/dao/UserDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/spring/model/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/spring/model/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/spring/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/spring/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/spring/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/spring/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/spring/dao/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/spring/dao/UserDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/spring/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/spring/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/spring/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/spring/service/UserServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -281,11 +278,6 @@
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="root:mysql" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:mysql" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@6d89e6c1" type="9fbbdea:ServiceModel$ServiceNode" />
-              </path>
             </expand>
             <select />
           </treeState>
@@ -304,7 +296,7 @@
       <option name="presentableId" value="Default" />
       <updated>1577609193341</updated>
       <workItem from="1577609198781" duration="52589000" />
-      <workItem from="1578076950043" duration="5516000" />
+      <workItem from="1578076950043" duration="7184000" />
     </task>
     <task id="LOCAL-00001" summary="working example">
       <created>1577612621924</created>
@@ -404,7 +396,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578072858606</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="+ RoleDao methods&#10;- made unidirectional relationship between Users and Roles">
+      <created>1578122341072</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1578122341072</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -454,7 +453,8 @@
     <MESSAGE value="- v2.0 start&#10;changed to a new DB&#10;+ Role class&#10;model changes" />
     <MESSAGE value="=== v2.0 start ===&#10;changed to a new DB&#10;+ Role class&#10;model changes" />
     <MESSAGE value="+ RoleType enum" />
-    <option name="LAST_COMMIT_MESSAGE" value="+ RoleType enum" />
+    <MESSAGE value="+ RoleDao methods&#10;- made unidirectional relationship between Users and Roles" />
+    <option name="LAST_COMMIT_MESSAGE" value="+ RoleDao methods&#10;- made unidirectional relationship between Users and Roles" />
   </component>
   <component name="WindowStateProjectService">
     <state x="593" y="-1043" key="#Assign_Data_Sources" timestamp="1577616731999">
@@ -469,11 +469,11 @@
       <screen x="-531" y="-1417" width="2560" height="1417" />
     </state>
     <state x="593" y="-1043" key="#com.intellij.execution.impl.EditConfigurationsDialog/-531.-1417.2560.1417/0.23.1440.877@-531.-1417.2560.1417" timestamp="1578049295400" />
-    <state x="752" y="286" key="#com.intellij.ide.util.MemberChooser" timestamp="1578121585691">
+    <state x="752" y="286" key="#com.intellij.ide.util.MemberChooser" timestamp="1578123231197">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="806" y="-992" key="#com.intellij.ide.util.MemberChooser/-531.-1417.2560.1417/0.23.1440.877@-531.-1417.2560.1417" timestamp="1578071475269" />
-    <state x="752" y="286" key="#com.intellij.ide.util.MemberChooser/0.23.1440.877@0.23.1440.877" timestamp="1578121585691" />
+    <state x="752" y="286" key="#com.intellij.ide.util.MemberChooser/0.23.1440.877@0.23.1440.877" timestamp="1578123231197" />
     <state x="613" y="-1013" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1577610453587">
       <screen x="-531" y="-1417" width="2560" height="1417" />
     </state>
@@ -487,10 +487,11 @@
     </state>
     <state x="169" y="-1417" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/-531.-1417.2560.1417/0.23.1440.877@-531.-1417.2560.1417" timestamp="1578049488867" />
     <state x="394" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.877@0.23.1440.877" timestamp="1578118276470" />
-    <state x="587" y="-1105" key="CommitChangelistDialog2" timestamp="1578072858260">
-      <screen x="-531" y="-1417" width="2560" height="1417" />
+    <state x="603" y="108" key="CommitChangelistDialog2" timestamp="1578122340676">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="587" y="-1105" key="CommitChangelistDialog2/-531.-1417.2560.1417/0.23.1440.877@-531.-1417.2560.1417" timestamp="1578072858260" />
+    <state x="603" y="108" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1578122340676" />
     <state x="31" y="-1322" width="1783" height="1217" key="DiffContextDialog" timestamp="1578072830962">
       <screen x="-531" y="-1417" width="2560" height="1417" />
     </state>

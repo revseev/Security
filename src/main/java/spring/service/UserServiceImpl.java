@@ -7,9 +7,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
 
@@ -18,7 +19,6 @@ public class UserServiceImpl implements UserService {
 
 //CRUD operations:
 
-    @Transactional//TODO move @Transactional to class declaration
     @Override
     public void addUser(User user){
         userDao.addUser(user);
@@ -26,8 +26,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(readOnly = true)
-    public User getUser(long id) {
-        return userDao.getUser(id);
+    public User getById(long id) {
+        return userDao.getById(id);
     }
 
     @Override
@@ -36,13 +36,11 @@ public class UserServiceImpl implements UserService {
         return userDao.getAllUsers();
     }
 
-    @Transactional
     @Override
     public void deleteUser(long id){
         userDao.deleteUser(id);
     }
 
-    @Transactional
     @Override
     public void updateUser(User user){
         userDao.updateUser(user);

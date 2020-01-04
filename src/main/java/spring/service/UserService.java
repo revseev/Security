@@ -3,13 +3,12 @@ package spring.service;
 import spring.model.User;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface UserService {
 
      public void addUser(User user);
 
-     User getUser(long id);
+     User getById(long id);
 
      List<User> getAllUsers();
 

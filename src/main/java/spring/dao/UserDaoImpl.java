@@ -22,7 +22,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void addUser(User user) {
-        getCurrentSession().save(user);
+        getCurrentSession().persist(user);
     }
 
     @Override
@@ -38,12 +38,18 @@ public class UserDaoImpl implements UserDao {
     @Override
     @SuppressWarnings("unchecked")
     public List<User> getAllUsers() {
-        return getCurrentSession().createQuery("FROM User").list();
+        List<User> users = getCurrentSession().createQuery("FROM User").list();
+        // for eagerly fetching user roles:
+        //TODO experiment with on/off
+        for(User user : users){
+            Hibernate.initialize(user.getRoles());
+        }
+        return users;
     }
 
     @Override
     public void deleteUser(long id) {
-        User user = (User) getCurrentSession().get(User.class, id);
+        User user = getCurrentSession().get(User.class, id);
         if (user != null) {
             getCurrentSession().delete(user);
         }
