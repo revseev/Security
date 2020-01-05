@@ -33,7 +33,7 @@
                 <th>Name</th>
                 <th>Password</th>
                 <th>Money</th>
-                <th>Role</th>
+                <th>Role(s)</th>
                 <th >Actions</th>
             </tr>
             <c:forEach var="user" items="${users}">
@@ -42,7 +42,11 @@
                     <td><c:out value="${user.username}" /></td>
                     <td><c:out value="${user.password}" /></td>
                     <td><c:out value="${user.money}" /></td>
-                    <td><c:out value="${user.role}" /></td>
+<%--                    <td><c:out value="${user.roles}" /></td>--%>
+                    <td><c:forEach var="role" items="${user.roles}">
+                        <c:out value="${role.type}" />
+<%--                        &nbsp--%>
+                        </c:forEach>
                     <td>
                     	<a href="/edit?id=<c:out value='${user.id}' />">Edit</a>
                     	&nbsp;&nbsp;&nbsp;&nbsp;

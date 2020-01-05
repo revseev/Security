@@ -24,9 +24,10 @@ public class User {
     @Column(name = "money")
     private Long money;
 
-    @ManyToMany(fetch = FetchType.LAZY/*,
-            cascade= {CascadeType.PERSIST, CascadeType.MERGE,
-                    CascadeType.DETACH, CascadeType.REFRESH}*/)
+    @ManyToMany(fetch = FetchType.LAZY,
+            //TODO потестировать
+            cascade= {CascadeType.MERGE}
+    )
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
     inverseJoinColumns = @JoinColumn(name = "role_id"))

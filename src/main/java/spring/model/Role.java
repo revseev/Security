@@ -11,7 +11,7 @@ public class Role {
     private long id;
 
     @Column(name = "type", nullable = false, unique = true)
-    private String type = RoleType.USER.asString();
+    private String type;
 
 
     public Role() {
