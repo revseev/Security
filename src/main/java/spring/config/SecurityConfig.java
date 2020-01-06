@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import spring.security.LoginSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -43,14 +44,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/list","/new","/save","delete","/edit").hasRole("ADMIN");
 
         http.formLogin()
-                    .loginPage("/login")
-                    .loginProcessingUrl("/login") //No need to have a controller for this
-                    .usernameParameter("username").passwordParameter("password")
-//                    .permitAll()
-                    ;
+                // указываем страницу с формой логина
+                .loginPage("/login")
+                //указываем логику обработки при логине
+                .successHandler(new LoginSuccessHandler()) //NEW
+                // указываем action с формы логина
+                .loginProcessingUrl("/login") //No need to have a controller for this
+                // Указываем параметры логина и пароля с формы логина
+                .usernameParameter("username").passwordParameter("password")
+                // даем доступ к форме логина всем
+                .permitAll();
 
         http.logout()
-                    .permitAll();
+                .permitAll();
 
         http.exceptionHandling()
                 .accessDeniedPage("/access-denied");
