@@ -1,6 +1,9 @@
 package spring.dao;
 
+import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
+import org.hibernate.criterion.Restrictions;
+import spring.model.Role;
 import spring.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -34,6 +37,16 @@ public class UserDaoImpl implements UserDao {
         return user;
     }
 
+    @Override
+    public User getByName(String username) {
+        Criteria crit = getCurrentSession().createCriteria(User.class);
+        crit.add(Restrictions.eq("username", username));
+        User user = (User) crit.uniqueResult();
+        if(user!=null){
+            Hibernate.initialize(user.getRoles());
+        }
+        return user;
+    }
 
     @Override
     @SuppressWarnings("unchecked")

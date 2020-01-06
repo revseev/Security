@@ -16,7 +16,7 @@
     </head>
 <body>
     <h3>My Login Page</h3>
-    <form:form action="${pageContext.request.contextPath}/authenticate" method="post">
+    <form:form action="${pageContext.request.contextPath}/login" method="post">
         <%-- Error message       --%>
         <c:if test="${param.error != null}">
             <p class="failed"><i>You entered invalid username/password!</i></p>

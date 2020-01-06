@@ -10,6 +10,8 @@ public interface UserService {
 
      User getById(long id);
 
+     User getByName(String username);
+
      List<User> getAllUsers();
 
      void deleteUser(long id);

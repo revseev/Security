@@ -1174,44 +1174,53 @@
       <DataType>bigint(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="294" parent="283" name="PRIMARY">
+    <index id="294" parent="283" name="users_username_uindex">
+      <ColNames>username</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <key id="295" parent="283" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="295" parent="284" name="user_id">
+    <key id="296" parent="283" name="users_username_uindex">
+      <ColNames>username</ColNames>
+      <UnderlyingIndexName>users_username_uindex</UnderlyingIndexName>
+    </key>
+    <column id="297" parent="284" name="user_id">
       <Position>1</Position>
       <DataType>bigint(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="296" parent="284" name="role_id">
+    <column id="298" parent="284" name="role_id">
       <Position>2</Position>
       <DataType>bigint(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="297" parent="284" name="user_id">
+    <index id="299" parent="284" name="user_id">
       <ColNames>user_id
 role_id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="298" parent="284" name="role_id">
+    <index id="300" parent="284" name="role_id">
       <ColNames>role_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="299" parent="284" name="user_id">
+    <key id="301" parent="284" name="user_id">
       <ColNames>user_id
 role_id</ColNames>
       <UnderlyingIndexName>user_id</UnderlyingIndexName>
     </key>
-    <foreign-key id="300" parent="284" name="users_roles_ibfk_1">
+    <foreign-key id="302" parent="284" name="users_roles_ibfk_1">
       <ColNames>user_id</ColNames>
       <RefTableName>users</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="301" parent="284" name="users_roles_ibfk_2">
+    <foreign-key id="303" parent="284" name="users_roles_ibfk_2">
       <ColNames>role_id</ColNames>
       <RefTableName>roles</RefTableName>
       <RefColNames>id</RefColNames>

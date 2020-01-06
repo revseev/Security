@@ -32,6 +32,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(readOnly = true)
+    public User getByName(String username) {
+        return userDao.getByName(username);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public List<User> getAllUsers(){
         return userDao.getAllUsers();
     }
@@ -45,18 +51,4 @@ public class UserServiceImpl implements UserService {
     public void updateUser(User user){
         userDao.updateUser(user);
     }
-
-//Login :
-
-    //TODO not sure if this is needed
-/*    @Transactional
-    @Override
-    public Optional<User> loginUser(String name, String password) {
-        User visitor = new User(name, password, 0L);
-
-        return getAllUsers()
-                        .stream()
-                        .filter(a -> a.equals(visitor))
-                        .findAny();
-    }*/
 }
