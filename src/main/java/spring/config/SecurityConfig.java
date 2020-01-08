@@ -21,10 +21,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
         auth.authenticationProvider(authenticationProvider());
     }
-/*    @Override
+/*
+ // In-memory authentication
+ @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         // add UserBuilder
         UserBuilder users = User.withDefaultPasswordEncoder();
@@ -39,7 +40,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-//                .anyRequest().authenticated()
                 .antMatchers("/").access("hasRole('USER') or hasRole('ADMIN')")
                 .antMatchers("/list","/new","/save","delete","/edit").hasRole("ADMIN");
 
